@@ -109,20 +109,20 @@ app.post('/api/cart', (req, res) => {
 
     const { unitPrice, quantity } = cart.items[cart.items.length - 1];
     cart.subTotal += Number(unitPrice) * Number(quantity);
-    return;
+    res.send(cart);
 });
 
-app.put('/api/cart', () => {
+app.put('/api/cart', (req, res) => {
     cart = {
         items: [],
         subTotal: 0
     };
-    return;
+    res.send(cart);
 });
 
 app.delete('/api/cart/:item', (req, res) => {
     const arr = cart.items.splice(req.params.item, 1);
     const { unitPrice, quantity } = arr[0];
     cart.subTotal -= Number(unitPrice) * Number(quantity);
-    return;
+    res.send(cart);
 });
