@@ -117,10 +117,12 @@ app.put('/api/cart', () => {
         items: [],
         subTotal: 0
     };
+    return;
 });
 
 app.delete('/api/cart/:item', (req, res) => {
     const arr = cart.items.splice(req.params.item, 1);
     const { unitPrice, quantity } = arr[0];
     cart.subTotal -= Number(unitPrice) * Number(quantity);
+    return;
 });
