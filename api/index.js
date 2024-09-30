@@ -109,6 +109,7 @@ app.post('/api/cart', (req, res) => {
 
     const { unitPrice, quantity } = cart.items[cart.items.length - 1];
     cart.subTotal += Number(unitPrice) * Number(quantity);
+    res.send(cart);
 });
 
 app.put('/api/cart', () => {
